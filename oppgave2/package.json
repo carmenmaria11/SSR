@@ -1,0 +1,17 @@
+{
+  "name": "ssr",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "serve": "node index.js",
+    "dev": "nodemon index.mjs"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^5.2.1",
+    "nodemon": "^3.1.14",
+    "pg": "^8.19.0"
+  }
+}

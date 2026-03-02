@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+</head>
+<body>
+    <ul id="liste"></ul>
+
+    <script>
+        fetch('/skuespillere-og-filmer-json')
+            .then(res => res.json())
+            .then(data => {
+                const liste = document.getElementById('liste');
+                data.forEach(rad => {
+                    const li = document.createElement('li');
+                    li.textContent = rad.navn + " spiller i " + rad.tittel;
+                    liste.appendChild(li);
+                });
+            });
+    </script>
+</body>
+</html>
