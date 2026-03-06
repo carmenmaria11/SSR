@@ -1,4 +1,5 @@
 # SERVER SIDE RENDERING 
+SSR (Server Side Rendering) betyr at når du går inn på en nettside, er det serveren som bygger opp HTML-siden og sender den ferdig til nettleseren din — i stedet for at nettleseren selv må sette den sammen med JavaScript.
 
 ## Hvordan starte applikasjon?
 1. Kjør npm install i terminalen
