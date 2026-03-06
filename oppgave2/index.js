@@ -1,6 +1,7 @@
 const express = require('express');
 const { Pool } = require('pg');
 const app = express();
+app.use(express.json());
 
 const pool = new Pool({
   user: 'postgres',
@@ -11,6 +12,16 @@ const pool = new Pool({
 });
 
 app.use(express.static('public'));
+
+app.post('/deltagere', async (req, res) => {
+    const data = req.body;
+    console.log('Lagrer deltager: ', data)
+    const query = 'INSERT INTO users (name) VALUES ($1)';
+    const values = [data.name];
+    await pool.query(query, values);
+    console.log('Lagret deltager: ', data)
+    res.send('Data lagret');
+});
 
 app.get('/api', (req, res) => {
     res.json({ message: 'Hello, World!' });
