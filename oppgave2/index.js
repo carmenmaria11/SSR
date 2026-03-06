@@ -12,7 +12,6 @@ const pool = new Pool({
 });
 
 app.use(express.static('public'));
-
 app.post('/deltagere', async (req, res) => {
     const data = req.body;
     console.log('Lagrer deltager: ', data)
@@ -85,4 +84,17 @@ app.get('/skuespillere-og-filmer-json', async (req, res) => {
 
 app.listen(3000, () => {
     console.log('Server listening on port 3000');
+});
+
+app.get('/skuespillere-json', async (req, res) => {
+    const result = await pool.query('SELECT * FROM skuespillere');
+    res.json(result.rows);
+});
+
+app.post('/skuespillere', async (req, res) => {
+    const data = req.body;
+    console.log('Lagrer skuespiller: ', data);
+    await pool.query('INSERT INTO skuespillere (navn) VALUES ($1)', [data.navn]);
+    console.log('Lagret skuespiller: ', data);
+    res.send('Data lagret');
 });
